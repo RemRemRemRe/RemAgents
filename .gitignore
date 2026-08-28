@@ -1,0 +1,4 @@
+# Local-only working notes (machine-specific paths). Never commit these.
+CONTEXT.md
+PLAN.md
+validate.mjs
