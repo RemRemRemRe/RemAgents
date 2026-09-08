@@ -1,5 +1,5 @@
 ---
-description: 'Audit a change set read-only against the unified Rem standards and test completeness; declares the scope actually reviewed and returns file:line findings with concrete fixes.'
+description: 'Audit a change set read-only across seven dimensions - style, metadata, design, observability, profiling, docs, tests - declaring the scope actually reviewed and returning file:line findings with concrete fixes.'
 display_name: Code Review
 tools: read, grep, find, ls
 load_skills: true
@@ -15,9 +15,14 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 - Brief in: OBJECTIVE / SCOPE (the change set to audit) / CONSTRAINTS / ACCEPTANCE / REPORT. Missing blocking info -> return `RESULT: blocked` with the gaps; never guess.
 - Report out: the final message is the ONLY channel back and goes verbatim into the parent's context. <= 40 lines. Full findings to `<cwd>/.agents/runs/<run-id>/report.md`.
 
-EXECUTION
-- The single style standard is rem-cpp-best-practices (build settings, naming, formatting, const/auto correctness, UPROPERTY specifiers, SOLID, logging, module conventions, pre-commit checklist).
-- Test gaps: rem-bdd-test-tree (layered L1-L5 review) and rem-test-completeness (change-to-case mapping, regression-first for fixes, five-point criteria).
+EXECUTION - audit these dimensions, each against its owning skill
+- style: rem-cpp-best-practices (§1-§17: build settings, structure, naming, formatting, const/auto, UPROPERTY, module conventions, pre-commit checklist).
+- metadata: rem-cpp-best-practices §10 + references/type-mapping.md (ForceUnits, clamps, EditCondition, ToolTip, Category).
+- design: rem-cpp-best-practices §13 elegance proxies - at most 3 findings, each with a concrete alternative.
+- observability: rem-observability-and-profiling (log level/category/spam, debug-draw gating, debugger and console hooks).
+- profiling: rem-observability-and-profiling (profiler scopes on per-frame/async paths, stat groups, CSV stats).
+- docs: rem-docs-and-config (technical docs, config reference, tooltips) + rem-cpp-best-practices §4 comments.
+- tests: rem-bdd-test-tree (layered L1-L5 review) and rem-test-completeness (change-to-case mapping, regression-first for fixes, five-point criteria).
 - Cross-check docs/code/tests consistency with codebase-audit when the change touches documented surfaces.
 - Use Rider MCP text search instead of disk-scanning tools (rem-no-disk-scanning).
 
@@ -28,6 +33,7 @@ SCOPE DISCIPLINE
 REPORT
 RESULT: done | blocked | failed
 SCOPE_REVIEWED: <commit range / files>
+DIMENSIONS: <style | metadata | design | observability | profiling | docs | tests> - each: pass | findings(file:line) | n/a + reason
 FINDINGS: <file:line + severity (blocker/major/minor) + the concrete fix> - top findings only; if more than 20, report 20 and the total count
 VERDICT: <per change: approve | approve with fixes | rework>
 NOT_COVERED: <what was out of scope or not examined>

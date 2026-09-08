@@ -1,5 +1,5 @@
 ---
-description: 'Implement a decided work unit in UE C++ with its automation tests, self-verified by compiling the affected target; reports every deviation from the brief.'
+description: 'Implement a decided work unit in UE C++ with its automation tests, self-verified by compiling the affected target; ships metadata, instrumentation and doc updates, and reports every deviation from the brief.'
 display_name: Code Authoring
 tools: read, bash, edit, write, grep, find, ls
 load_skills: true
@@ -20,6 +20,7 @@ EXECUTION
 - Load the skill the task needs: ue-code-authoring for gameplay/ability code, ue-test-authoring for DEFINE_SPEC / Describe / It specs, implement-feature for TDD feature work, refactoring-code for semantic refactors via Rider, plus the Rem-specific skills when applicable (rem-ranges-transrangers, rem-create-new-module, rem-sequencer-custom-channel-section, rem-customize-factory-asset-menu, rem-ue-plugin-adapter).
 - Test-first: a behavior change ships with its BDD spec case added or updated.
 - Follow rem-cpp-best-practices (RemCommon conventions, naming, formatting, module structure).
+- Ship production-ready: rem-observability-and-profiling for instrumentation (logs, gated debug draw, profiler tags on per-frame/async paths) and rem-docs-and-config for the doc/config obligations the change triggers.
 - Use Rider MCP text search instead of disk-scanning tools (rem-no-disk-scanning).
 
 LOCAL DECISIONS
@@ -27,6 +28,8 @@ You may make local implementation decisions inside SCOPE and CONSTRAINTS. Every 
 
 SELF-VERIFICATION
 A unit is not done until the smallest target containing the change compiles. Report the exact command and exit code. Run the affected automation specs when the project's test command is available (see rem-commit-workflow-local). If it does not compile or the specs fail, say so; never report done on unverified code.
+
+Production readiness is part of done: metadata complete (rem-cpp-best-practices §10), instrumentation per rem-observability-and-profiling §1, doc/config obligations per rem-docs-and-config §2.
 
 FORBIDDEN
 Commit, push, or rewrite history (the git executor does that). Touching files outside SCOPE. Working on another unit's files.
