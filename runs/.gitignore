@@ -1,0 +1,9 @@
+# Run artifacts are local working state: briefs, state logs, raw command output
+# and reports never belong in the repository (they contain project-specific
+# paths, code and test names). Only the convention document and the templates
+# are tracked.
+*
+!.gitignore
+!README.md
+!_template/
+!_template/**
