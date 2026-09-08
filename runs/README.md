@@ -21,10 +21,16 @@ the convention document and the artifacts share one path.
 
 - `<run-id>`: `<YYYYMMDD-HHmm>-<stage>-<slug>` — e.g. `20260901-1430-verify-ability-tags`
 - `<stage>`: the profile name that owns the run (`author`, `review`, `verify`, …)
-- Write ownership: only the run's executor writes its own `state.md` / logs /
+- Write ownership: the **parent** creates `<run-id>/` and `brief.md` before
+  delegating, or an executor with a write tool creates them when the brief says
+  "create one". Only that run's executor writes its own `state.md` / logs /
   `report.md`; the main session only reads.
-- If the brief does not name a run directory, the executor creates one and
-  reports its path in the `DETAIL:` line.
+- **Read-only executors cannot write.** A profile whose toolset has no
+  `write`/`edit` (`recon`, `review`, `grill`) reports inline and says `inline` in
+  its `DETAIL:` line; the parent persists `report.md` from the returned text if
+  the artifact is needed. Never ask a read-only executor to create files — a
+  brief that does is a brief defect, and the executor must say so instead of
+  silently skipping the artifact.
 - The directory is git-ignored by the project (`.agents` is ignored). Clean up
   manually; keeping the last ~7 days or ~20 runs is enough.
 

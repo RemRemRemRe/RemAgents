@@ -27,6 +27,7 @@ Respect the collection split: project-specific facts (real paths, machine names,
 REPORT
 RESULT: done | blocked | failed
 FILES_TOUCHED: <path + what changed>
+EVIDENCE: <checklist items run + commands/reads that ground FILES_TOUCHED and PUBLISH_CHECK>
 DECISIONS: <judgement calls the parent should know about>
 PUBLISH_CHECK: <public/private split verdict + which checklist items were run, or "n/a">
 RISKS:
