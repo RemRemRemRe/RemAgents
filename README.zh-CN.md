@@ -105,6 +105,14 @@ DETAIL:   <run-dir 路径>
   报告通知。
 - `runs/` 下只有约定文档与模板被追踪；运行产物（`<run-id>/brief.md`、
   `state.md`、`*.log`、`report.md`）被 gitignore，仅存本地。
+- `tools/validate-profiles.mjs` 用 pi-web 真实解析器校验 profile：frontmatter
+  回退、scope、报告骨架字段，以及 `runs/` 产物守卫。机器路径来自
+  `tools/validate.local.json` —— 每个克隆复制一次
+  `tools/validate.local.example.json`（该文件 gitignored）；也可用
+  `--pi-web`/`--cwd` 或 `PI_WEB_ROOT`/`PROJECT_CWD`。
+- 可选：安装本地 pre-push 门禁（`git config core.hooksPath .githooks`），
+  推送前自动校验。退出码 2（路径未配置）**跳过**而非阻断；
+  `git push --no-verify` 是故意留的绕过口。
 
 ## License
 

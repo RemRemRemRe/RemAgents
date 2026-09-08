@@ -1,0 +1,33 @@
+#!/bin/sh
+# Profile validation gate. Install once per clone:
+#   git config core.hooksPath .githooks
+#
+# Runs tools/validate-profiles.mjs before the push. Exit 2 from the script means
+# it could not validate (pi-web or the project root not configured) — that skips
+# the gate instead of blocking it. Bypass deliberately with
+# `git push --no-verify` (and say why).
+
+# Resolve the repo root from the hook's own location, not from the caller's
+# working directory: a manual `sh <path>` from another repository would otherwise
+# resolve to that repository.
+root=$(cd "$(dirname "$0")/.." && pwd) || exit 1
+cd "$root" || exit 1
+
+if ! command -v node >/dev/null 2>&1; then
+    echo "pre-push: node not found — skipping profile validation" >&2
+    exit 0
+fi
+
+node tools/validate-profiles.mjs
+code=$?
+
+if [ "$code" -eq 2 ]; then
+    echo "pre-push: profile validation skipped (see the message above)" >&2
+    exit 0
+fi
+
+if [ "$code" -ne 0 ]; then
+    echo "" >&2
+    echo "pre-push: profile validation failed — fix it before pushing (bypass: git push --no-verify)" >&2
+    exit 1
+fi

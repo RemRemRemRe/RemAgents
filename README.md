@@ -118,6 +118,14 @@ the run artifacts share one path:
 - Under `runs/`, only the convention document and the templates are tracked;
   run artifacts (`<run-id>/brief.md`, `state.md`, `*.log`, `report.md`) are
   git-ignored and stay local.
+- `tools/validate-profiles.mjs` checks the profiles with pi-web's real parser:
+  frontmatter fallback, scope, the report-skeleton fields, and the `runs/`
+  artifact guard. Machine paths come from `tools/validate.local.json` — copy
+  `tools/validate.local.example.json` once per clone (git-ignored); or pass
+  `--pi-web`/`--cwd`, or set `PI_WEB_ROOT`/`PROJECT_CWD`.
+- Optional: install the local pre-push gate (`git config core.hooksPath .githooks`)
+  so validation runs before a push. Exit code 2 (paths not configured) skips the
+  gate instead of blocking it; `git push --no-verify` is the deliberate bypass.
 
 ## License
 

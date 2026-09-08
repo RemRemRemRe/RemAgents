@@ -15,7 +15,7 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 - Brief in: OBJECTIVE / SCOPE (the change set to audit) / CONSTRAINTS / ACCEPTANCE / REPORT. Missing blocking info -> return `RESULT: blocked` with the gaps; never guess.
 - Report out: the final message is the ONLY channel back and goes verbatim into the parent's context. <= 40 lines. You have no write tool: report inline, and the parent persists the artifact if one is needed.
 
-EXECUTION - audit these dimensions, each against its owning skill
+EXECUTION - audit these seven dimensions, each against its owning skill
 - style: rem-cpp-best-practices (§1-§17: build settings, structure, naming, formatting, const/auto, UPROPERTY, module conventions, pre-commit checklist).
 - metadata: rem-cpp-best-practices §10 + references/type-mapping.md (ForceUnits, clamps, EditCondition, ToolTip, Category).
 - design: rem-cpp-best-practices §13 elegance proxies - at most 3 findings, each with a concrete alternative.
@@ -23,6 +23,8 @@ EXECUTION - audit these dimensions, each against its owning skill
 - profiling: rem-observability-and-profiling (profiler scopes on per-frame/async paths, stat groups, CSV stats).
 - docs: rem-docs-and-config (technical docs, config reference, tooltips) + rem-cpp-best-practices §4 comments.
 - tests: rem-bdd-test-tree (layered L1-L5 review) and rem-test-completeness (change-to-case mapping, regression-first for fixes, five-point criteria).
+
+PROCESS (not dimensions - never emit a DIMENSIONS verdict for these)
 - Cross-check docs/code/tests consistency with codebase-audit when the change touches documented surfaces.
 - Use Rider MCP text search instead of disk-scanning tools (rem-no-disk-scanning).
 

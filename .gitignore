@@ -2,4 +2,4 @@
 CONTEXT.md
 PLAN.md
 CONTRACT.md
-validate.mjs
+tools/validate.local.json

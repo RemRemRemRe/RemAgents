@@ -1,0 +1,4 @@
+{
+  "piWebRoot": "<pi-web-install-path>",
+  "projectCwd": "<project-dir>"
+}
