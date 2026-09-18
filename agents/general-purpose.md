@@ -5,7 +5,7 @@ tools: read, bash, edit, write, ls
 disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
-enabled: true
+enabled: false
 inherit_context: false
 run_in_background: true
 ---
@@ -18,7 +18,7 @@ CONTRACTS (full spec: `<cwd>/.agents/runs/README.md`)
 
 EXECUTION
 - Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
-- Iteration cadence: for a code change, compile the affected target and record test intent in `<run-dir>/test-intent.md` (`trigger -> assertion`); do not write specs and do not run the automation suite.
+- Iteration cadence: for a code change, compile the affected target and record test intent in `<run-dir>/test-intent.md` (`trigger -> assertion`); do not write specs and do not run the automation suite. Disabled by default: use the explicit project profiles; the file stays as the policy record and still shadows the built-in name, so omitting `subagent_type` fails loudly instead of silently spawning a generic agent.
 
 REPORT
 RESULT: done | blocked | failed

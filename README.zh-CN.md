@@ -70,9 +70,10 @@ DETAIL:   <run-dir 路径>
   read/bash/edit/write/ls；可用 `disallowed_tools` 剔除）、`load_skills`、`load_extensions`、
   `enabled`、`inherit_context`、`run_in_background`，可选 `model`/
   `thinking`/`max_turns`，正文即 systemPrompt。
-- `explore`/`plan`/`general-purpose` 在 `<cwd>/.agents/agents` 下被**本地覆盖**：
-  内置版本带 `grep`/`find` 且不加载扩展；覆盖版只走 Rider MCP 搜索（见
-  `rem-no-disk-scanning`）并加载扩展。
+- `explore`/`plan`/`general-purpose` 被 `<cwd>/.agents/agents` 下的**禁用覆盖**
+  遮蔽（`enabled: false`）：内置版带 `grep`/`find` 且不加载扩展，而这三类需求
+  已由项目 profile 覆盖，因此三个名字不可用，每次委派都必须显式传
+  `subagent_type`。
 - 主会话通过 Agent 工具以 `subagent_type` 委派。
 - `load_skills`/`load_extensions`：子代理加载项目的技能集合（如 Rem 技能及
   私有配套）与扩展工具（MCP，如 Rider 文本搜索），由项目的 `skills` 设置配置。

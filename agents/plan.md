@@ -5,7 +5,7 @@ tools: read, bash, ls
 disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
-enabled: true
+enabled: false
 inherit_context: false
 run_in_background: true
 ---
@@ -19,7 +19,7 @@ CONTRACTS (full spec: `<cwd>/.agents/runs/README.md`)
 EXECUTION
 - Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob.
 - If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
-- Name concrete files and steps; call out dependencies, risks and verification steps.
+- Name concrete files and steps; call out dependencies, risks and verification steps. Disabled by default: use `grill` for decision analysis or `recon` for facts; the file stays as the policy record and still shadows the built-in name.
 
 REPORT
 RESULT: done | blocked | failed
