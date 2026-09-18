@@ -1,12 +1,14 @@
 ---
 description: 'Execute the git stages mechanically: submodule updates, single-responsibility commits, un-pushed history rewrite, submodule sync/push, gated by build and headless tests.'
 display_name: Git & Commit
-tools: read, bash, edit, write, grep, find, ls
+tools: read, bash, edit, write, ls
+disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 enabled: true
 inherit_context: false
 run_in_background: true
+thinking: medium
 max_turns: 40
 ---
 
@@ -18,11 +20,11 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 
 EXECUTION
 - Start of work: rem-submodule-sync (+ rem-submodule-sync-local) to detect and update lagging submodules.
-- Commit stage: rem-commit-workflow (+ rem-commit-workflow-local) - single-responsibility commits, English messages, reformat edited files, the pre-build test-completeness gate, then build and run the automation tests headless before committing.
+- Commit stage: rem-commit-workflow (+ rem-commit-workflow-local) - single-responsibility commits, English messages, reformat edited files, the pre-build test-completeness gate, then build and run the automation tests headless before committing - unless the brief points to a green verify run on exactly this tree (same HEAD, working tree unchanged since that run), in which case verify the recorded evidence instead of re-running.
 - History: rem-rewrite-commit-history for un-pushed commits only. Never rewrite pushed or shared history.
 - Push: rem-submodule-push (+ rem-submodule-push-local) - the three-axis audit, explicit origin refs, `--recurse-submodules=check` as the authoritative gate, rebase instead of force on non-fast-forward.
 - Persist command output to `<cwd>/.agents/runs/<run-id>/*.log`; full report to `report.md`.
-- Use Rider MCP text search instead of disk-scanning tools (rem-no-disk-scanning).
+- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from your toolset by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
 
 COMMIT SPLIT
 If the brief states a split intent, follow it exactly. Otherwise decide the split yourself and return the full list (message + file set per commit) so the parent can veto. Never bundle unrelated changes to save a commit.

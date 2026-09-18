@@ -1,7 +1,8 @@
 ---
 description: 'Analyse a plan or design: explore the repository, model decisions as a dependency graph, and return the frontier of open questions with recommended answers and close-call scores.'
 display_name: Plan & Decision
-tools: read, grep, find, ls
+tools: read, bash, ls
+disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 enabled: true
@@ -18,7 +19,7 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 EXECUTION
 - Load batch-grill-with-docs and follow its methodology: explore, model decisions as a graph, resolve queryable facts yourself instead of asking, then recompute the frontier.
 - Read-only: never modify files.
-- Use Rider MCP text search instead of disk-scanning tools (rem-no-disk-scanning).
+- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from this profile by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
 
 DECISION DISCIPLINE
 - Every decision node states its dependencies, its reversibility (easy / hard), and whether it is already settled by an existing decision or ADR.

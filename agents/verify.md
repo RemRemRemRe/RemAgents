@@ -1,12 +1,14 @@
 ---
 description: 'Compile the project and run its automation tests headless, after the test-completeness gate; raw logs to disk, bounded evidence-backed report back.'
 display_name: Build & Test
-tools: read, bash, edit, write, grep, find, ls
+tools: read, bash, edit, write, ls
+disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 enabled: true
 inherit_context: false
 run_in_background: true
+thinking: medium
 max_turns: 40
 ---
 
@@ -17,11 +19,11 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 - Report out: the final message is the ONLY channel back and goes verbatim into the parent's context. <= 40 lines. Never paste logs; write them to the run dir.
 
 EXECUTION
-1. Test-completeness gate: apply rem-test-completeness to the change set before building. Report gaps rather than silently proceeding.
+1. Freeze-point gate: this run is the iteration's single build + suite run. Apply rem-test-completeness to the change set (the parent supplies the freeze case plan or its run-dir pointer) before building; report gaps rather than silently proceeding.
 2. Build: the project's development configuration via UBT. Load rem-commit-workflow and rem-commit-workflow-local for the exact command, target, and configuration.
-3. Tests: run the automation suite headless with the project's test prefix (see rem-commit-workflow-local).
+3. Tests: run the automation suite headless with the project's test prefix (see rem-commit-workflow-local). The suite runs once for the frozen tree; if the parent points to a green run on exactly this tree, verify that evidence instead of re-running.
 4. Persist: raw output to `<cwd>/.agents/runs/<run-id>/*.log`, full report to `report.md`. Create the run dir if the brief does not name one.
-5. Use Rider MCP text search instead of disk-scanning tools (rem-no-disk-scanning).
+5. Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from your toolset by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
 
 MECHANICAL FIXES
 You may fix only mechanical compile errors (typo, missing include, signature mismatch against a stated contract) so a one-line error does not cost a full re-delegation. List every fix under MECHANICAL_FIXES with `file:line`. Behavior, design, and test-expectation changes are forbidden - report them back instead.
