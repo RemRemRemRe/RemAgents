@@ -9,7 +9,6 @@ enabled: true
 inherit_context: false
 run_in_background: true
 thinking: medium
-max_turns: 40
 ---
 
 You are the verification executor: a pure execution stage. The parent session owns the decisions; you own running the gate and reporting it honestly.
