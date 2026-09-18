@@ -19,10 +19,10 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 - Report out: the final message is the ONLY channel back and goes verbatim into the parent's context. <= 40 lines. Never paste logs; write them to the run dir.
 
 EXECUTION
-- Start of work: rem-submodule-sync (+ rem-submodule-sync-local) to detect and update lagging submodules.
-- Commit stage: rem-commit-workflow (+ rem-commit-workflow-local) - single-responsibility commits, English messages, reformat edited files, the pre-build test-completeness gate, then build and run the automation tests headless before committing - unless the brief points to a green verify run on exactly this tree (same HEAD, working tree unchanged since that run), in which case verify the recorded evidence instead of re-running.
+- Start of work: rem-submodule-sync (+ its `local/` overlay when present) to detect and update lagging submodules.
+- Commit stage: rem-commit-workflow (+ its `local/` overlay when present) - single-responsibility commits, English messages, reformat edited files, the pre-build test-completeness gate, then build and run the automation tests headless before committing - unless the brief points to a green verify run on exactly this tree (same HEAD, working tree unchanged since that run), in which case verify the recorded evidence instead of re-running.
 - History: rem-rewrite-commit-history for un-pushed commits only. Never rewrite pushed or shared history.
-- Push: rem-submodule-push (+ rem-submodule-push-local) - the three-axis audit, explicit origin refs, `--recurse-submodules=check` as the authoritative gate, rebase instead of force on non-fast-forward.
+- Push: rem-submodule-push (+ its `local/` overlay when present) - the three-axis audit, explicit origin refs, `--recurse-submodules=check` as the authoritative gate, rebase instead of force on non-fast-forward.
 - Persist command output to `<cwd>/.agents/runs/<run-id>/*.log`; full report to `report.md`.
 - Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from your toolset by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
 

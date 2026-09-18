@@ -85,9 +85,9 @@ defect, or an environment defect.
   `subagent_type`.
 - The parent session delegates via the Agent tool with `subagent_type`.
 - `load_skills`/`load_extensions`: subagents load the project's skill
-  collection (e.g. the Rem skills and their private companion) and extension
-  tools (MCP, e.g. Rider text search), as configured by the project's
-  `skills` settings.
+  collection (e.g. the Rem skills, each possibly carrying a git-ignored
+  `local/` overlay of machine values) and extension tools (MCP, e.g. Rider
+  text search), as configured by the project's `skills` settings.
 
 ## Install
 
@@ -110,8 +110,9 @@ the run artifacts share one path:
 4. Restart or reload the pi-web session so the Agent tool picks up the new
    profiles.
 5. Project-specific values (build paths, test prefix, plugin inventory) are
-   **not** in this repo — they live in the project's private companion skills,
-   which the profiles reference by name.
+   **not** in this repo — the public skills hold rules only; each may carry a
+   git-ignored `local/` overlay (symlinks to values tracked in a private
+   repo), and `RemSkillsPrivate` keeps local-only skills.
 
 ## Notes
 

@@ -75,8 +75,9 @@ DETAIL:   <run-dir 路径>
   已由项目 profile 覆盖，因此三个名字不可用，每次委派都必须显式传
   `subagent_type`。
 - 主会话通过 Agent 工具以 `subagent_type` 委派。
-- `load_skills`/`load_extensions`：子代理加载项目的技能集合（如 Rem 技能及
-  私有配套）与扩展工具（MCP，如 Rider 文本搜索），由项目的 `skills` 设置配置。
+- `load_skills`/`load_extensions`：子代理加载项目的技能集合（如 Rem 技能，
+  每个可带 git-ignored 的 `local/` 本地值覆盖）与扩展工具（MCP，如 Rider
+  文本搜索），由项目的 `skills` 设置配置。
 
 ## 安装
 
@@ -96,8 +97,9 @@ DETAIL:   <run-dir 路径>
    ```
 
 4. 重启或 reload pi-web 会话，Agent 工具即可识别新 profile。
-5. 项目特定值（构建路径、测试前缀、插件清单）**不在本仓库** —— 它们位于
-   项目的私有配套技能中，profile 仅按名引用。
+5. 项目特定值（构建路径、测试前缀、插件清单）**不在本仓库** —— 公开技能
+   只写规则；每个技能可带 git-ignored 的 `local/` 覆盖（symlink 指向私有
+   仓库中追踪的值），本地专属技能保留在 `RemSkillsPrivate`。
 
 ## 注意事项
 
