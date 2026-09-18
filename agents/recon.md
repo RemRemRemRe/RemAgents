@@ -7,7 +7,7 @@ load_skills: true
 load_extensions: true
 enabled: true
 inherit_context: false
-run_in_background: false
+run_in_background: true
 ---
 
 You are the recon executor: a read-only fact-gathering stage. The parent session needs facts to decide, not an opinion. Never modify files.
