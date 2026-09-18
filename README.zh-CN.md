@@ -67,9 +67,12 @@ DETAIL:   <run-dir 路径>
   （**workspace**）或 `<cwd>/.pi/agents/*.md`（**项目**）加载 profile；
   优先级：builtin < global < workspace < project。
 - 每个 profile 是带 YAML frontmatter 的 markdown：`tools`（白名单：
-  read/bash/edit/write/grep/find/ls）、`load_skills`、`load_extensions`、
+  read/bash/edit/write/ls；可用 `disallowed_tools` 剔除）、`load_skills`、`load_extensions`、
   `enabled`、`inherit_context`、`run_in_background`，可选 `model`/
   `thinking`/`max_turns`，正文即 systemPrompt。
+- `explore`/`plan`/`general-purpose` 在 `<cwd>/.agents/agents` 下被**本地覆盖**：
+  内置版本带 `grep`/`find` 且不加载扩展；覆盖版只走 Rider MCP 搜索（见
+  `rem-no-disk-scanning`）并加载扩展。
 - 主会话通过 Agent 工具以 `subagent_type` 委派。
 - `load_skills`/`load_extensions`：子代理加载项目的技能集合（如 Rem 技能及
   私有配套）与扩展工具（MCP，如 Rider 文本搜索），由项目的 `skills` 设置配置。

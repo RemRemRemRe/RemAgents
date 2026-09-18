@@ -74,9 +74,14 @@ defect, or an environment defect.
   `<cwd>/.agents/agents/*.md` (**workspace**), or `<cwd>/.pi/agents/*.md`
   (**project**); precedence: builtin < global < workspace < project.
 - Each profile is a markdown file with YAML frontmatter: `tools` (allowlist:
-  read/bash/edit/write/grep/find/ls), `load_skills`, `load_extensions`,
+  read/bash/edit/write/ls; `disallowed_tools` can strip entries), `load_skills`,
+  `load_extensions`,
   `enabled`, `inherit_context`, `run_in_background`, optional `model`/
   `thinking`/`max_turns`, plus the system prompt as the body.
+- `explore`/`plan`/`general-purpose` are **locally overridden** in
+  `<cwd>/.agents/agents`: the built-ins ship `grep`/`find` and no extensions,
+  while the overrides search through Rider MCP only (see
+  `rem-no-disk-scanning`) and load extensions.
 - The parent session delegates via the Agent tool with `subagent_type`.
 - `load_skills`/`load_extensions`: subagents load the project's skill
   collection (e.g. the Rem skills and their private companion) and extension

@@ -15,6 +15,7 @@ the convention document and the artifacts share one path.
 <cwd>/.agents/runs/<run-id>/
   brief.md    # written by the main session (the delegation brief)
   state.md    # append-only progress / local decisions, written by the executor
+  test-intent.md # iteration-phase test intent (one line per behaviour: trigger -> assertion)
   *.log       # raw command output
   report.md   # full report; the final message is a summary + pointer
 ```
@@ -31,6 +32,9 @@ the convention document and the artifacts share one path.
   the artifact is needed. Never ask a read-only executor to create files — a
   brief that does is a brief defect, and the executor must say so instead of
   silently skipping the artifact.
+- **`resume` continues the same child session and the same run directory.**
+  Append to `state.md`; never create a new run dir for resumed work. The brief
+  carries only the delta plus what the previous pass did not cover.
 - The directory is git-ignored by the project (`.agents` is ignored). Clean up
   manually; keeping the last ~7 days or ~20 runs is enough.
 
