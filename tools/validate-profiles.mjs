@@ -20,8 +20,8 @@ import { dirname, join, resolve } from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import { execFileSync } from "child_process";
 
-/** Longest acceptable system prompt; the report contract caps the *report*, this caps the brief side. */
-const MAX_PROMPT_CHARS = 3000;
+/** Longest acceptable system prompt; the report contract caps the *report* (40 lines / 4000 chars), this caps the brief side (contract + policy + pointers, ~900 tokens). */
+const MAX_PROMPT_CHARS = 3600;
 /** Every report skeleton must name where its evidence comes from. */
 const REQUIRED_REPORT_FIELD = /^EVIDENCE(?:_CHAIN)?:/m;
 /** Files allowed to be tracked under runs/ (the convention document and templates). */
