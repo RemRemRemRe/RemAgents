@@ -46,7 +46,9 @@ the convention document and the artifacts share one path.
   stray artifact into the run dir.
 - **`resume` continues the same child session and the same run directory.**
   Append to `state.md`; never create a new run dir for resumed work. The brief
-  carries only the delta plus what the previous pass did not cover.
+  carries only the delta plus what the previous pass did not cover. It must pass
+  the same explicit `subagent_type`: without it the call fails against the
+  built-in default profile.
 - The directory is git-ignored by the project (`.agents` is ignored). Clean up
   manually; keeping the last ~7 days or ~20 runs is enough.
 

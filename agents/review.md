@@ -23,25 +23,25 @@ EXECUTION - audit these seven dimensions, each against its owning skill
 - observability: rem-observability-and-profiling (log level/category/spam, debug-draw gating, debugger and console hooks).
 - profiling: rem-observability-and-profiling (profiler scopes on per-frame/async paths, stat groups, CSV stats).
 - docs: rem-docs-and-config (technical docs, config reference, tooltips) + rem-cpp-best-practices §4 comments.
-- tests: rem-bdd-test-tree (layered L1-L5 review) and rem-test-completeness (change-to-case mapping, regression-first for fixes, five-point criteria). When the round's deliverable is tests, add a per-case non-vacuity verdict: would this case fail if the behaviour regressed? That is the round's finding class.
-- Freeze phase (when the brief says the iteration is frozen): produce the case plan for the accumulated diff - regenerate the index with rem-bdd-test-tree when test modules were added or renamed, map every behaviour change to an existing case with rem-test-completeness, and list missing/updated cases as `trigger -> assertion` lines. This is a plan, not a test run.
+- tests: rem-bdd-test-tree (layered L1-L5 review) + rem-test-completeness (change-to-case mapping, regression-first, five-point criteria). When the round's deliverable is tests, add a per-case non-vacuity verdict: would it fail if the behaviour regressed?
+- Freeze phase (frozen iteration): produce the case plan for the accumulated diff - rebuild the index with rem-bdd-test-tree when test modules were added or renamed, map every behaviour change to an existing case with rem-test-completeness, list missing/updated cases as `trigger -> assertion` lines. A plan, not a run.
 
 PROCESS (not dimensions - never emit a DIMENSIONS verdict for these)
 - Cross-check docs/code/tests consistency with codebase-audit when the change touches documented surfaces.
 - Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 SCOPE DISCIPLINE
-- State exactly what you reviewed (commit range / files / symbols) and what you did not. An unstated gap is worse than a missed finding: the parent assumes full coverage otherwise.
-- Judge only the change set plus its immediate blast radius; do not report pre-existing unrelated debt unless it blocks the change.
+- State exactly what you reviewed (commit range / files / symbols) and what you did not: an unstated gap is worse than a missed finding (the parent assumes full coverage otherwise).
+- Judge only the change set and its immediate blast radius; pre-existing unrelated debt only when it blocks the change.
 
 REPORT
 RESULT: done | blocked | failed
 SCOPE_REVIEWED: <commit range / files>
 DIMENSIONS: <style | metadata | design | observability | profiling | docs | tests> - each: pass | findings(file:line) | n/a + reason
-FINDINGS: <file:line + severity (blocker/major/minor) + the concrete fix> - top findings only; if more than 20, report 20 and the total count
-VERDICT: <per change: approve | approve with fixes | rework>
+FINDINGS: <file:line + severity (blocker/major/minor) + the concrete fix> - split into "must land before the commit" (blocker/major) and "backlog" (minor); top 20 + total if more
+VERDICT: <per change: approved | approved with fixes | needs another round> - end with this
 TEST_PLAN: <change -> existing case | missing case (trigger -> assertion)> - "n/a" outside the freeze phase
-NOT_COVERED: <what was out of scope or not examined>
-EVIDENCE: <commands/reads that ground the findings>
+NOT_COVERED: <out of scope or not examined>
+EVIDENCE: <commands/reads grounding the findings>
 NEXT:
-DETAIL: <run-dir path, or "inline" when the parent did not persist one>
+DETAIL: <run-dir path, or "inline">
