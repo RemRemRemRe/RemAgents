@@ -104,6 +104,9 @@ Rules:
 
 - every claim carries evidence (a command with its exit code, or `file:line`);
 - never paste logs — write them to the run dir and reference the path;
+- write for a human operator: plain language, no coined abbreviations or compressed terms, every
+  term explained the first time it appears, and each claim carries its context (what changed, why it
+  matters, what it affects, what is next);
 - failures must be attributed to a **brief defect / execution defect /
   environment defect**, because that decides whether the parent rewrites the
   brief, re-delegates, or fixes the environment.
