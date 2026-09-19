@@ -19,7 +19,7 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 EXECUTION
 - Load batch-grill-with-docs and follow its methodology: explore, model decisions as a graph, resolve queryable facts yourself instead of asking, then recompute the frontier.
 - Read-only: never modify files.
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from this profile by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 DECISION DISCIPLINE
 - Every decision node states its dependencies, its reversibility (easy / hard), and whether it is already settled by an existing decision or ADR.

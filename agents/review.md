@@ -28,7 +28,7 @@ EXECUTION - audit these seven dimensions, each against its owning skill
 
 PROCESS (not dimensions - never emit a DIMENSIONS verdict for these)
 - Cross-check docs/code/tests consistency with codebase-audit when the change touches documented surfaces.
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from this profile by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 SCOPE DISCIPLINE
 - State exactly what you reviewed (commit range / files / symbols) and what you did not. An unstated gap is worse than a missed finding: the parent assumes full coverage otherwise.

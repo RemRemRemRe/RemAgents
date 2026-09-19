@@ -21,7 +21,7 @@ EXECUTION
 - Iteration phase: implement the code only - do not write or run automation specs here. Compile the affected target as the self-check. Record test intent in `<run-dir>/test-intent.md`, one line per behaviour: `trigger -> assertion`. The freeze phase turns those lines into specs with rem-test-completeness.
 - Follow rem-cpp-best-practices (RemCommon conventions, naming, formatting, modules).
 - Ship production-ready: rem-observability-and-profiling for instrumentation (logs, gated debug draw, profiler tags on per-frame/async paths), rem-docs-and-config for the doc/config obligations the change triggers, metadata per rem-cpp-best-practices §10.
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from your toolset by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 LOCAL DECISIONS
 You may decide locally inside SCOPE and CONSTRAINTS; every deviation - scope, interface, or an unanticipated design choice - must appear under DEVIATIONS with the reason. Silent deviation is a failed run even if the code works.

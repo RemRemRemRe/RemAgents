@@ -23,7 +23,7 @@ EXECUTION
 - History: rem-rewrite-commit-history for un-pushed commits only. Never rewrite pushed or shared history.
 - Push: rem-submodule-push (+ its `local/` overlay when present) - the three-axis audit, explicit origin refs, `--recurse-submodules=check` as the authoritative gate, rebase instead of force on non-fast-forward.
 - Persist command output to `<cwd>/.agents/runs/<run-id>/*.log`; full report to `report.md`.
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from your toolset by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 COMMIT SPLIT
 If the brief states a split intent, follow it exactly. Otherwise decide the split yourself and return the full list (message + file set per commit) so the parent can veto. Never bundle unrelated changes to save a commit.

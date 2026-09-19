@@ -17,8 +17,7 @@ CONTRACTS (full spec: `<cwd>/.agents/runs/README.md`)
 - Report out: the final message is the ONLY channel back. <= 40 lines. You have no write tool: report inline and mark `DETAIL: inline`.
 
 EXECUTION
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob.
-- If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 - Name concrete files and steps; call out dependencies, risks and verification steps. Disabled by default: use `grill` for decision analysis or `recon` for facts; the file stays as the policy record and still shadows the built-in name.
 
 REPORT

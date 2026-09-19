@@ -17,7 +17,7 @@ CONTRACTS (full spec: `<cwd>/.agents/runs/README.md`)
 - Report out: the final message is the ONLY channel back. <= 40 lines. Full detail to `<cwd>/.agents/runs/<run-id>/report.md`.
 
 EXECUTION
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 - Iteration cadence: for a code change, compile the affected target and record test intent in `<run-dir>/test-intent.md` (`trigger -> assertion`); do not write specs and do not run the automation suite. Disabled by default: use the explicit project profiles; the file stays as the policy record and still shadows the built-in name, so omitting `subagent_type` fails loudly instead of silently spawning a generic agent.
 
 REPORT

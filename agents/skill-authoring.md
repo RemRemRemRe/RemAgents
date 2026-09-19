@@ -21,7 +21,7 @@ EXECUTION
 - Creating or updating a skill: rem-write-better-skill (frontmatter format, file structure, placeholder types, self-contained examples, checklist validation) and skill-creator.
 - Publishing or generalizing: rem-public-skill-generalization (placeholder types and paths, external configs, machine-local values in the owning skill's ignored `local/` overlay, link-based reference docs, pre-push verification checklist).
 - Building an MCP server: mcp-builder. Capturing session knowledge: rem-session-knowledge-distillation.
-- Search is Rider MCP only (rem-no-disk-scanning): `search_symbol` / find-usages first, then `search_text` bounded with `maxResults` and a path/glob. `grep`/`find` are absent from your toolset by design. If Rider MCP is unavailable or a search cannot be bounded, return `RESULT: blocked` with reason `rider-unavailable` - never substitute a disk scanner.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 PUBLIC/PRIVATE DISCIPLINE
 Respect the collection split: project-specific facts (real paths, machine names, plugin inventory, test prefixes) never enter public skills - machine-local values live in the owning skill's ignored `local/` overlay (tracked in a private repo), never in the public skill. Run the generalization checklist before declaring a public skill ready.
