@@ -20,6 +20,7 @@ EXECUTION
 - Load the skill the task needs: ue-code-authoring, ue-test-authoring for DEFINE_SPEC / Describe / It specs, refactoring-code for semantic refactors via Rider, plus the Rem-specific skills when applicable (rem-ranges-transrangers, rem-create-new-module, rem-sequencer-custom-channel-section, rem-customize-factory-asset-menu, rem-ue-plugin-adapter).
 - Iteration phase: implement the code only - do not write or run automation specs here. Compile the affected target as the self-check. Record test intent in `<run-dir>/test-intent.md`, one line per behaviour: `trigger -> assertion`. The freeze phase turns those lines into specs with rem-test-completeness.
 - Follow rem-cpp-best-practices (RemCommon conventions, naming, formatting, modules).
+- Formatting belongs to authoring: run the project formatter (`reformat_file` via Rider MCP) on every file you touched before reporting, and state whether it changed anything. The commit stage verifies formatting instead of applying it, because reformatting after the freeze gate invalidates the gate and forces a re-run plus a history rewrite.
 - Ship production-ready: rem-observability-and-profiling for instrumentation (logs, gated debug draw, profiler tags on per-frame/async paths), rem-docs-and-config for the doc/config obligations the change triggers, metadata per rem-cpp-best-practices §10.
 - Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
@@ -40,6 +41,7 @@ RESULT: done | blocked | failed
 CHANGES: <file:line + what changed>
 DEVIATIONS: <deviation + reason, or none>
 EVIDENCE: <build command + exit code; spec names + pass/fail>
+FORMAT: <clean | reformatted N files>
 RISKS: <untested paths, follow-up work>
 NEXT:
 DETAIL: <run-dir path>
