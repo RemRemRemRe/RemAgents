@@ -40,7 +40,9 @@ the convention document and the artifacts share one path.
   consumes it, or a reviewer may re-run it. Never write into the repository
   working tree (git-ignored paths included) and never pass a command an output
   path under `<cwd>`; the only repository writes an executor makes are the
-  task's own sources. Before reporting, check the repository root and move any
+  task's own sources. When a run is superseded, move its logs out of the run
+  directory with a `superseded` marker; the directory keeps one authoritative
+  copy per stage. Before reporting, check the repository root and move any
   stray artifact into the run dir.
 - **`resume` continues the same child session and the same run directory.**
   Append to `state.md`; never create a new run dir for resumed work. The brief
@@ -78,6 +80,9 @@ Persisting raw material on disk lets the main session:
 
 Missing **blocking** information -> the executor returns `RESULT: blocked` and
 lists the gaps; it never guesses. Non-blocking gaps -> listed under `ASSUMPTIONS`.
+The SCOPE section quotes the expected working set **verbatim** — the expected
+`git status --short` output, pasted in full — not a counted total: a wrong count
+forces an avoidable round trip.
 
 ### Report (executor -> main session)
 
