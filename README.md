@@ -129,7 +129,10 @@ the run artifacts share one path:
   frontmatter fallback, scope, the report-skeleton fields, and the `runs/`
   artifact guard. Machine paths come from `tools/validate.local.json` — copy
   `tools/validate.local.example.json` once per clone (git-ignored); or pass
-  `--pi-web`/`--cwd`, or set `PI_WEB_ROOT`/`PROJECT_CWD`.
+  `--pi-web`/`--cwd`, or set `PI_WEB_ROOT`/`PROJECT_CWD`. It also enforces
+  pi-web's prompt cap, so a profile edit is budgeted: check the reported headroom
+  before adding, and pay for an addition by compression or a cross-reference
+  rather than by raising the cap.
 - Optional: install the local pre-push gate (`git config core.hooksPath .githooks`)
   so validation runs before a push. Exit code 2 (paths not configured) skips the
   gate instead of blocking it; `git push --no-verify` is the deliberate bypass.
