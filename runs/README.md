@@ -16,7 +16,7 @@ the convention document and the artifacts share one path.
   brief.md    # written by the main session (the delegation brief)
   state.md    # append-only progress / local decisions, written by the executor
   test-intent.md # iteration-phase test intent (one line per behaviour: trigger -> assertion)
-  *.log       # raw command output
+  *.log       # raw command output — one authoritative copy per stage
   report.md   # full report; the final message is a summary + pointer
 ```
 
@@ -32,13 +32,16 @@ the convention document and the artifacts share one path.
   the artifact is needed. Never ask a read-only executor to create files — a
   brief that does is a brief defect, and the executor must say so instead of
   silently skipping the artifact.
-- **Write boundary.** Every file a run creates — `state.md`, `report.md`, logs,
-  copies of engine/tool logs, generated message files — lives inside its
-  `<run-id>/` or the OS temp directory. Never write into the repository working
-  tree (git-ignored paths included) and never pass a command an output path
-  under `<cwd>`; the only repository writes an executor makes are the task's own
-  sources. Before reporting, check the repository root and move any stray
-  artifact into the run dir.
+- **Write boundary: temp first.** The OS temp directory is the default home for
+  everything a run generates on the way — one-shot patches, generated message
+  files, probe inputs, intermediate dumps, superseded log copies. A file is
+  written into `<run-id>/` only when a later reader needs it: the report or gate
+  evidence cites it (one authoritative copy per log), a later stage or `resume`
+  consumes it, or a reviewer may re-run it. Never write into the repository
+  working tree (git-ignored paths included) and never pass a command an output
+  path under `<cwd>`; the only repository writes an executor makes are the
+  task's own sources. Before reporting, check the repository root and move any
+  stray artifact into the run dir.
 - **`resume` continues the same child session and the same run directory.**
   Append to `state.md`; never create a new run dir for resumed work. The brief
   carries only the delta plus what the previous pass did not cover.
