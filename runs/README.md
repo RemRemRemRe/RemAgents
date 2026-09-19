@@ -32,6 +32,13 @@ the convention document and the artifacts share one path.
   the artifact is needed. Never ask a read-only executor to create files — a
   brief that does is a brief defect, and the executor must say so instead of
   silently skipping the artifact.
+- **Write boundary.** Every file a run creates — `state.md`, `report.md`, logs,
+  copies of engine/tool logs, generated message files — lives inside its
+  `<run-id>/` or the OS temp directory. Never write into the repository working
+  tree (git-ignored paths included) and never pass a command an output path
+  under `<cwd>`; the only repository writes an executor makes are the task's own
+  sources. Before reporting, check the repository root and move any stray
+  artifact into the run dir.
 - **`resume` continues the same child session and the same run directory.**
   Append to `state.md`; never create a new run dir for resumed work. The brief
   carries only the delta plus what the previous pass did not cover.
