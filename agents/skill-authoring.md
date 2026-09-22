@@ -19,7 +19,7 @@ CONTRACTS (full spec when present: `<cwd>/.agents/runs/README.md`)
 
 EXECUTION
 - Creating or updating a skill: rem-write-better-skill (frontmatter format, file structure, placeholder types, self-contained examples, checklist validation) and skill-creator.
-- Publishing or generalizing: rem-public-skill-generalization (placeholder types and paths, external configs, machine-local values in the owning skill's ignored `local/` overlay, link-based reference docs, pre-push verification checklist).
+- Publishing or generalizing: rem-public-material-generalization (placeholder types and paths, external configs, machine-local values in the owning skill's ignored `local/` overlay, link-based reference docs, pre-push verification checklist).
 - Building an MCP server: mcp-builder. Capturing session knowledge: rem-session-knowledge-distillation.
 - Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
