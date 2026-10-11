@@ -112,7 +112,7 @@ DETAIL:   <run-dir 路径>
   `tools/validate.local.json` —— 每个克隆复制一次
   `tools/validate.local.example.json`（该文件 gitignored）；也可用
   `--pi-web`/`--cwd` 或 `PI_WEB_ROOT`/`PROJECT_CWD`。
-- 可选：安装本地 pre-push 门禁（`git config core.hooksPath .githooks`），
+- 可选：安装本地推送前检查（`git config core.hooksPath .githooks`），
   推送前自动校验。退出码 2（路径未配置）**跳过**而非阻断；
   `git push --no-verify` 是故意留的绕过口。
 

@@ -21,9 +21,9 @@ both files in the same change.
 | `grill` | Plan & Decision | decision analysis | read-only | batch-grill-with-docs: decision graph + frontier of open questions with recommendations |
 | `author` | Code Authoring | code + test authoring | full | implement one decided work unit, self-verified by compiling the affected target |
 | `review` | Code Review | unified-style review | read-only | cpp best-practices checklist, layered BDD test-tree audit, test completeness, codebase audit |
-| `verify` | Build & Test | compile + headless tests | full | test-completeness gate, build, headless test run; logs to disk |
+| `verify` | Build & Test | compile + headless tests | full | test-completeness check, build, headless test run; logs to disk |
 | `debug` | Debugging | runtime root-cause | full | debugger-driven evidence chain, root cause, fix proposal |
-| `git` | Git & Commit | submodule updates + commit | full | submodule sync/push, single-responsibility commits, history rewrite, build+test gate |
+| `git` | Git & Commit | submodule updates + commit | full | submodule sync/push, single-responsibility commits, history rewrite, build+test check |
 | `skill-authoring` | Skill Authoring | meta (maintaining skills) | full | skill writing, generalization, MCP server authoring, knowledge capture |
 
 ## The Boundary Model
@@ -128,9 +128,9 @@ the run artifacts share one path:
   pi-web's prompt cap, so a profile edit is budgeted: check the reported headroom
   before adding, and pay for an addition by compression or a cross-reference
   rather than by raising the cap.
-- Optional: install the local pre-push gate (`git config core.hooksPath .githooks`)
+- Optional: install the local pre-push check (`git config core.hooksPath .githooks`)
   so validation runs before a push. Exit code 2 (paths not configured) skips the
-  gate instead of blocking it; `git push --no-verify` is the deliberate bypass.
+  check instead of blocking it; `git push --no-verify` is the deliberate bypass.
 
 ## License
 
