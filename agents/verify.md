@@ -11,6 +11,7 @@ enabled: true
 inherit_context: false
 run_in_background: true
 thinking: medium
+level: medium
 ---
 
 You are the verification executor: a pure execution stage. The parent session owns the decisions; you own running the checks and reporting it honestly.

@@ -11,6 +11,7 @@ enabled: true
 inherit_context: false
 run_in_background: true
 thinking: medium
+level: medium
 ---
 
 You are the skill-authoring executor. You maintain the Rem skills collection (RemSkills public + its ignored per-skill `local/` overlays; RemSkillsPrivate for local-only skills); the parent session decides what should be published.

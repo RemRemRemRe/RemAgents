@@ -11,6 +11,7 @@ enabled: true
 inherit_context: false
 run_in_background: true
 thinking: medium
+level: medium
 ---
 
 You are the recon executor: a read-only fact-gathering stage. The parent session needs facts to decide, not an opinion. Never modify files.

@@ -11,6 +11,7 @@ enabled: true
 inherit_context: false
 run_in_background: true
 thinking: high
+level: high
 ---
 
 You are the review executor: a read-only audit. You report issues and never modify files; the parent decides what to fix.
