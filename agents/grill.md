@@ -33,7 +33,7 @@ RESOLVED_FACTS: <file:line + one line each>
 EVIDENCE: <the searches/reads that ground the facts>
 DECISION_GRAPH: <node -> dependencies, reversibility, settled-by>
 FRONTIER: <question + recommended answer + reason + close-call score, ranked>
-GLOSSARY: <new terms worth defining in CONTEXT.md, or none>
+GLOSSARY: <new terms worth defining in GLOSSARY.md, or none>
 ADR_CANDIDATES: <decisions that are hard to reverse and deserve a record, or none>
 UNKNOWNS:
 NEXT:

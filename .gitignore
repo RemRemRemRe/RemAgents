@@ -1,5 +1,5 @@
 # Local-only working notes (machine-specific paths). Never commit these.
-/CONTEXT.md
+/GLOSSARY.md
 /PLAN.md
 /CONTRACT.md
 /tools/validate.local.json
