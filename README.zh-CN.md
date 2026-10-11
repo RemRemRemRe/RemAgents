@@ -68,12 +68,8 @@ DETAIL:   <run-dir 路径>
   优先级：builtin < global < workspace < project。
 - 每个 profile 是带 YAML frontmatter 的 markdown：`tools`（白名单：
   read/bash/edit/write/ls；可用 `disallowed_tools` 剔除）、`load_skills`、`load_extensions`、
-  `enabled`、`inherit_context`、`run_in_background`，可选 `model`/
-  `thinking`/`max_turns`，正文即 systemPrompt。
-- `explore`/`plan`/`general-purpose` 被 `<cwd>/.agents/agents` 下的**禁用覆盖**
-  遮蔽（`enabled: false`）：内置版带 `grep`/`find` 且不加载扩展，而这三类需求
-  已由项目 profile 覆盖，因此三个名字不可用，每次委派都必须显式传
-  `subagent_type`。
+  `codemode`（`inherit`/`on`/`off`）、`enabled`、`inherit_context`、
+  `run_in_background`，可选 `model`/`thinking`/`max_turns`，正文即 systemPrompt。
 - 主会话通过 Agent 工具以 `subagent_type` 委派。
 - `load_skills`/`load_extensions`：子代理加载项目的技能集合（如 Rem 技能，
   每个可带 git-ignored 的 `local/` 本地值覆盖）与扩展工具（MCP，如 Rider

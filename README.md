@@ -75,14 +75,9 @@ defect, or an environment defect.
   (**project**); precedence: builtin < global < workspace < project.
 - Each profile is a markdown file with YAML frontmatter: `tools` (allowlist:
   read/bash/edit/write/ls; `disallowed_tools` can strip entries), `load_skills`,
-  `load_extensions`,
-  `enabled`, `inherit_context`, `run_in_background`, optional `model`/
+  `load_extensions`, `codemode` (`inherit`/`on`/`off`), `enabled`,
+  `inherit_context`, `run_in_background`, optional `model`/
   `thinking`/`max_turns`, plus the system prompt as the body.
-- `explore`/`plan`/`general-purpose` are shadowed by **disabled local overrides**
-  in `<cwd>/.agents/agents` (`enabled: false`): the built-ins ship `grep`/`find`
-  and no extensions, and the project profiles cover those needs, so the three
-  names are unavailable and every delegation must pass an explicit
-  `subagent_type`.
 - The parent session delegates via the Agent tool with `subagent_type`.
 - `load_skills`/`load_extensions`: subagents load the project's skill
   collection (e.g. the Rem skills, each possibly carrying a git-ignored
