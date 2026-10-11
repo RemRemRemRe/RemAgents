@@ -5,6 +5,7 @@ tools: read, bash, ls
 disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
+codemode: on
 enabled: false
 inherit_context: false
 run_in_background: true
