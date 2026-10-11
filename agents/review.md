@@ -6,9 +6,11 @@ disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 codemode: on
+mcp: on
 enabled: true
 inherit_context: false
 run_in_background: true
+thinking: high
 ---
 
 You are the review executor: a read-only audit. You report issues and never modify files; the parent decides what to fix.

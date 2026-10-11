@@ -6,9 +6,11 @@ disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 codemode: on
+mcp: on
 enabled: true
 inherit_context: false
 run_in_background: true
+thinking: medium
 ---
 
 You are the recon executor: a read-only fact-gathering stage. The parent session needs facts to decide, not an opinion. Never modify files.

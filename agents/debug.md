@@ -6,9 +6,11 @@ disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 codemode: on
+mcp: on
 enabled: true
 inherit_context: false
 run_in_background: true
+thinking: high
 ---
 
 You are the debug executor: a root-cause stage driven by evidence, not guessing. The parent session decides whether and how to fix; you establish what is actually happening.
