@@ -15,7 +15,9 @@ the convention document and the artifacts share one path.
 <cwd>/.agents/runs/<run-id>/
   brief.md    # written by the main session (the delegation brief)
   state.md    # append-only progress / local decisions, written by the executor
-  test-intent.md # iteration-phase test intent (one line per behaviour: trigger -> assertion)
+  plan.md     # the parent's unit ledger: per unit, is the surface settled and has the full check run
+  test-plan.md # the case plan for the accumulated diff, written by the parent from the review's report
+  test-intent.md # iteration-phase test intent (one line per behaviour, prefixed with the test prefix it will feed: `<prefix> | trigger -> assertion`)
   *.log       # raw command output — one authoritative copy per stage
   report.md   # full report; the final message is a summary + pointer
 ```
@@ -28,7 +30,7 @@ the convention document and the artifacts share one path.
   `report.md`; the main session only reads.
 - **Read-only executors cannot write.** A profile whose toolset has no
   `write`/`edit` (`recon`, `review`, `grill`) reports inline and says `inline` in
-  its `DETAIL:` line; the parent persists `report.md` from the returned text if
+  its `DETAIL:` line; the parent persists `report.md` or `test-plan.md` from the returned text if
   the artifact is needed. Never ask a read-only executor to create files — a
   brief that does is a brief defect, and the executor must say so instead of
   silently skipping the artifact.
@@ -44,6 +46,8 @@ the convention document and the artifacts share one path.
   directory with a `superseded` marker; the directory keeps one authoritative
   copy per stage. Before reporting, check the repository root and move any
   stray artifact into the run dir.
+- **`plan.md` is the parent's ledger** (append-only): one line per work unit - is the surface settled,
+  has the full check run. Only the parent writes it; an executor may read it when its brief points there.
 - **`resume` continues the same child session and the same run directory.**
   Append to `state.md`; never create a new run dir for resumed work. The brief
   carries only the delta plus what the previous pass did not cover. It must pass
