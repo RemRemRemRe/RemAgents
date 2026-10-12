@@ -17,6 +17,7 @@ the convention document and the artifacts share one path.
   state.md    # append-only progress / local decisions, written by the executor
   plan.md     # the parent's unit ledger: per unit, is the surface settled and has the full check run
   test-plan.md # the case plan for the accumulated diff, written by the parent from the review's report
+  test-debt.md # behaviour deferred without a case: what, why, when it must be paid (empty before a push)
   test-intent.md # iteration-phase test intent (one line per behaviour, prefixed with the test prefix it will feed: `<prefix> | trigger -> assertion`)
   *.log       # raw command output — one authoritative copy per stage
   report.md   # full report; the final message is a summary + pointer
@@ -48,6 +49,7 @@ the convention document and the artifacts share one path.
   stray artifact into the run dir.
 - **`plan.md` is the parent's ledger** (append-only): one line per work unit - is the surface settled,
   has the full check run. Only the parent writes it; an executor may read it when its brief points there.
+  The same hand keeps `test-debt.md`, one line per deferred behaviour, empty before a push.
 - **`resume` continues the same child session and the same run directory.**
   Append to `state.md`; never create a new run dir for resumed work. The brief
   carries only the delta plus what the previous pass did not cover. It must pass
