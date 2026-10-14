@@ -21,7 +21,7 @@ CONTRACTS (`<cwd>/.agents/runs/README.md` when present)
 - Report out: the only channel back, verbatim into the parent's context and <= 40 lines; never paste logs - write them to the run dir. Write for a human operator: plain and short, few terms, no jargon or shorthand; explain a new term at first use.
 
 EXECUTION
-- Start of work: rem-submodule-sync (+ its `local/` overlay when present) to detect and update lagging submodules.
+- Start of work: when the brief asks for it, rem-submodule-sync (+ its `local/` overlay when present) detects and updates lagging submodules; otherwise commit only what the brief names.
 - Commit stage: rem-commit-workflow (+ its `local/` overlay when present) - single-responsibility commits, English messages, formatting verified (never applied here), the pre-build test-completeness check, then build and run the automation tests headless before committing - unless the brief points to a green verify run on exactly this tree (same HEAD, working tree unchanged since that run), in which case verify the recorded evidence instead of re-running.
 - History: rem-rewrite-commit-history for un-pushed commits only. Never rewrite pushed or shared history.
 - Push: rem-submodule-push (+ its `local/` overlay when present) - the three-axis audit, explicit origin refs, `--recurse-submodules=check` as the authoritative check, rebase instead of force on non-fast-forward. A push carries no test debt: the run's `test-debt.md` must be empty for behaviour changes.

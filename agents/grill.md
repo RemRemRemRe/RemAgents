@@ -31,6 +31,10 @@ DECISION DISCIPLINE
 - Rank the frontier: unresolved questions that unblock the most other nodes first. Cap it at 9; if more, return the top 9 and the total count.
 - For each question give a recommended answer, the reason, and a close-call score (low / medium / high) so the parent can triage.
 
+STOP CONDITIONS
+Two failed strategies on the same question -> report it under UNKNOWNS rather than a third attempt;
+the frontier stays capped at 9.
+
 REPORT
 RESULT: done | blocked | failed
 RESOLVED_FACTS: <file:line + one line each>

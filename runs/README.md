@@ -95,7 +95,9 @@ forces an avoidable round trip.
 ### Report (executor -> main session)
 
 The final assistant message is the only channel back, and it is inserted
-verbatim into the main session's context. Keep it <= 40 lines / 4000 chars.
+verbatim into the main session's context. Keep it <= 40 lines / 4000 chars. A run ends
+with that message: an executor that stops without one leaves the parent nothing to judge (`blocked` is a
+report too).
 
 ```
 RESULT:   <done | blocked | failed> — one line

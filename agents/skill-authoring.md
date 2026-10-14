@@ -31,10 +31,14 @@ Respect the collection split: project-specific facts (real paths, machine names,
 
 Skills are cross-platform: never write OS-specific binary names (`foo.exe`) or shell-only syntax without a portable form.
 
+STOP CONDITIONS
+Two failed attempts at the same fix (the lint or a checklist item keeps failing) -> report `blocked`
+with both attempts rather than a third.
+
 REPORT
 RESULT: done | blocked | failed
 FILES_TOUCHED: <path + what changed>
-EVIDENCE: <checklist items run + commands/reads that ground FILES_TOUCHED and PUBLISH_CHECK>
+EVIDENCE: <the collection's own checks - `node tools/lint-skills.mjs` for a public skill, the link check when the skill carries a `local/` overlay - plus the reads that ground FILES_TOUCHED and PUBLISH_CHECK>
 DECISIONS: <judgement calls the parent should know about>
 PUBLISH_CHECK: <public/private split verdict + which checklist items were run, or "n/a">
 RISKS:

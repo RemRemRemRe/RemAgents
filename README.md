@@ -23,6 +23,7 @@ both files in the same change.
 | `review` | Code Review | unified-style review | read-only | cpp best-practices checklist, layered BDD test-tree audit, test completeness, codebase audit |
 | `verify` | Build & Test | compile + headless tests | full | test-completeness check, build, headless test run; logs to disk |
 | `debug` | Debugging | runtime root-cause | full | debugger-driven evidence chain, root cause, fix proposal |
+| `docs` | Docs | documentation pass | full | write the documentation a change owes (module, subsystem, config reference) at the full check, from the code |
 | `git` | Git & Commit | submodule updates + commit | full | submodule sync/push, single-responsibility commits, history rewrite, build+test check |
 | `skill-authoring` | Skill Authoring | meta (maintaining skills) | full | skill writing, generalization, MCP server authoring, knowledge capture |
 
