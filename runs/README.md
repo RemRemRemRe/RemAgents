@@ -18,6 +18,7 @@ the convention document and the artifacts share one path.
   plan.md     # the parent's unit ledger: per unit, is the surface settled and has the full check run
   test-plan.md # the case plan for the accumulated diff, written by the parent from the review's report
   test-debt.md # behaviour deferred without a case: what, why, when it must be paid (empty before a push)
+  knowledge-candidates.md # distillation candidates: what was proposed, what the operator rejected
   test-intent.md # iteration-phase test intent (one line per behaviour, prefixed with the test prefix it will feed: `<prefix> | trigger -> assertion`)
   *.log       # raw command output — one authoritative copy per stage
   report.md   # full report; the final message is a summary + pointer
