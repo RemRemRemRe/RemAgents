@@ -10,7 +10,7 @@ mcp: on
 enabled: true
 inherit_context: false
 run_in_background: true
-thinking: medium
+thinking: high
 level: medium
 ---
 

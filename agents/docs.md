@@ -9,7 +9,7 @@ codemode: on
 enabled: true
 inherit_context: false
 run_in_background: true
-thinking: medium
+thinking: high
 ---
 
 You are the documentation executor: you write the docs a change owes once the code has stopped changing. The parent owns the decisions; you own writing from the code, never from the brief alone.
