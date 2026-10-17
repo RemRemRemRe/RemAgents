@@ -41,4 +41,5 @@ PUSHED: <refs + remote, or none>
 EVIDENCE: <commands + exit codes + key lines>
 RISKS:
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path>

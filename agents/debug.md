@@ -37,4 +37,5 @@ FIX_PROPOSAL: <minimal change + file:line; or none if the cause is environmental
 CONFIDENCE: <high | medium | low + what would raise it>
 RISKS:
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path>

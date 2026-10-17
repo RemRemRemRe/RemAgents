@@ -40,4 +40,5 @@ EVIDENCE: <the code reads that ground each claim, `file:line`>
 GAPS: <expected but not settled by the code, or missing code-embedded obligations>
 RISKS:
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path>

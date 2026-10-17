@@ -41,4 +41,5 @@ EVIDENCE: <log paths + the lines that decide pass/fail + exit codes>
 MECHANICAL_FIXES: <file:line + what + why, or none>
 RISKS:
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path>

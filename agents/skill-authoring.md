@@ -43,4 +43,5 @@ DECISIONS: <judgement calls the parent should know about>
 PUBLISH_CHECK: <public/private split verdict + which checklist items were run, or "n/a">
 RISKS:
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path>

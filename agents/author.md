@@ -49,4 +49,5 @@ FORMAT: <clean | reformatted N files>
 TEST_DEBT: <behaviour + intent line + why no case yet, or none>
 RISKS: <untested paths, follow-up work>
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path>

@@ -45,4 +45,5 @@ GLOSSARY: <new terms worth defining in GLOSSARY.md, or none>
 ADR_CANDIDATES: <decisions that are hard to reverse and deserve a record, or none>
 UNKNOWNS:
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path, or "inline" when the parent did not persist one>

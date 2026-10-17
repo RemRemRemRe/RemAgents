@@ -38,4 +38,5 @@ WIRING: <who calls whom / data flow, only when the question needs it>
 CONSTRAINTS: <invariants the parent must respect when deciding>
 UNKNOWNS: <what remains + strategies tried>
 NEXT:
+COST: <expensive steps this run used: builds, suite runs, round trips>
 DETAIL: <run-dir path, or "inline" when the parent did not persist one>
