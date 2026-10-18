@@ -21,11 +21,12 @@ CONTRACTS (`<cwd>/.agents/runs/README.md` when present)
 - Report out: the only channel back, verbatim into the parent's context and <= 40 lines; full detail in `<cwd>/.agents/runs/<run-id>/report.md`; logs and generators stay in temp (rem-temp-files) unless the report cites them. Write for a human operator: plain and short, few terms, no jargon or shorthand; explain a new term at first use.
 
 EXECUTION
-- Load the skill the task needs: ue-code-authoring, ue-test-authoring for DEFINE_SPEC / Describe / It specs, refactoring-code for semantic refactors, plus the Rem-specific skills that apply (rem-ranges-transrangers, rem-create-new-module, rem-sequencer-custom-channel-section, rem-customize-factory-asset-menu, rem-ue-plugin-adapter).
+- Load the skill the task needs: ue-code-authoring, ue-test-authoring for DEFINE_SPEC / Describe / It specs, refactoring-code for semantic refactors, plus the Rem-specific skills that apply (ranges/transrangers, modules, sequencer channels, asset menus, plugin adaptation).
+- Semantic refactors (rename, move, extract) prefer the IDE's MCP refactoring tools; text replacement is the fallback.
 - Iteration phase: implement the code only - do not write or run automation specs here, except when the brief *is* test authoring (new or changed cases): end that round with one targeted run of that spec, labelled a trial run in the report; the suite still waits for the full check. Compile the affected target as the self-check. Record test intent in `<run-dir>/test-intent.md`, one line per behaviour: `<prefix> | trigger -> assertion`. The full check maps the diff to cases (rem-test-completeness); the intent lines are its cross-check, not the case list.
 - Follow rem-cpp-best-practices.
 - Formatting closes this round: run the project formatter (`reformat_file` via Rider MCP) on every touched file, re-read it, then compile - the verified bytes must be the formatted bytes. The commit stage never reformats.
-- Ship production-ready: rem-observability-and-profiling for instrumentation (logs, gated debug draw, profiler tags on per-frame/async paths), rem-docs-and-config for the doc/config obligations the change triggers, metadata per rem-cpp-best-practices §10.
+- Ship production-ready: rem-observability-and-profiling (logs, gated debug draw, profiler tags), rem-docs-and-config (doc/config obligations), metadata per rem-cpp-best-practices §10.
 - Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 LOCAL DECISIONS
