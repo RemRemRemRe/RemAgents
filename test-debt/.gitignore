@@ -1,0 +1,7 @@
+# Test records are local working state: the unrun list and the manual checks hold
+# project-specific paths, behaviour and case names, and archive/ holds the old
+# ledgers. Only the convention document and the template are tracked.
+*
+!.gitignore
+!README.md
+!_template.md
