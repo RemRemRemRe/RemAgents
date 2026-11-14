@@ -1,5 +1,5 @@
 ---
-description: 'Write the documentation a change owes - module docs, subsystem docs, config references - at the full check, from the code and the change set; reports the files written, the sources behind each claim and the gaps the code does not settle.'
+description: 'Write the documentation a change owes - module docs, subsystem docs, config references - at the freeze, from the code and the change set; reports the files written, the sources behind each claim and the gaps the code does not settle.'
 display_name: Docs
 tools: read, bash, edit, write, ls
 disallowed_tools: grep, find

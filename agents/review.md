@@ -27,8 +27,8 @@ EXECUTION - audit these seven dimensions, each against its owning skill
 - observability: rem-observability-and-profiling (log level/category/spam, debug-draw gating, debugger and console hooks).
 - profiling: rem-observability-and-profiling (profiler scopes on per-frame/async paths, stat groups, CSV stats).
 - docs: rem-docs-and-config (technical docs, config reference, tooltips) + rem-cpp-best-practices §4 comments; on a rename or removal, search the doc set for the old name and report every hit.
-- tests: rem-bdd-test-tree (L1-L5) + rem-test-completeness (change-to-case, regression-first, five-point criteria). On a test deliverable, add a per-case non-vacuity verdict: would it fail if the behaviour regressed?
-- Full-check phase: the case plan for the accumulated diff - rebuild the index with rem-bdd-test-tree when test modules were added or renamed, map every behaviour change to a case with rem-test-completeness, list missing/updated cases as `<prefix> | trigger -> assertion` lines. A plan, not a run.
+- tests: rem-bdd-test-tree (L1-L5) + rem-test-completeness (change-to-case, regression-first, five-point criteria).
+- Cases, before the push gate's run: one non-vacuity verdict per case - would it fail if its behaviour regressed? Never a case plan.
 
 PROCESS (never emit a DIMENSIONS verdict for these)
 - Cross-check docs/code/tests with codebase-audit on documented surfaces.
@@ -48,7 +48,6 @@ SCOPE_REVIEWED: <commit range / files>
 DIMENSIONS: <style | metadata | design | observability | profiling | docs | tests> - each: pass | findings(file:line) | n/a + reason
 FINDINGS: <file:line + severity (blocker/major/minor) + the concrete fix> - split into "must land before the commit" (blocker/major) and "backlog" (minor); top 20 + total if more
 VERDICT: <per change: approved | approved with fixes | needs another round> - end with this
-TEST_PLAN: <change -> existing case | missing case (<prefix> | trigger -> assertion)> - "n/a" outside the full check
 NOT_COVERED: <out of scope or not examined>
 EVIDENCE: <commands/reads grounding the findings>
 NEXT:
