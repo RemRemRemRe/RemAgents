@@ -21,7 +21,7 @@ CONTRACTS (`<cwd>/.agents/runs/README.md` when present)
 - Report out: the only channel back, verbatim into the parent's context and <= 40 lines; no write tool: report inline, the parent persists the artifact. Write for a human operator: plain and short, few terms, no jargon or shorthand; explain a new term at first use.
 
 EXECUTION
-- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are banned by policy, not by the toolset - your `bash` can still run them, so never do it. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 - Resolve every queryable fact yourself instead of asking. Stop only on facts that require a human decision.
 - Read the code you cite; do not infer from names alone.
 

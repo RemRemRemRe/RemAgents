@@ -23,7 +23,7 @@ CONTRACTS (`<cwd>/.agents/runs/README.md` when present)
 EXECUTION
 - Load batch-grill-with-docs and follow its methodology: explore, model decisions as a graph, resolve queryable facts yourself instead of asking, then recompute the frontier.
 - Read-only: never modify files.
-- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are banned by policy, not by the toolset - your `bash` can still run them, so never do it. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 DECISION DISCIPLINE
 - Every decision node states its dependencies, its reversibility (easy / hard), and whether it is already settled by an existing decision or ADR.

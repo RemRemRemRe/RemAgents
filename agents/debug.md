@@ -24,7 +24,7 @@ EXECUTION
 - Load ue-live-debugging (Rider MCP: call analysis, file problems, breakpoints, live PIE queries) and debugging-code when a debugger is available; otherwise work from source and logs and say so.
 - Pin the actual code path: breakpoints, call order, thread context, runtime values. Reproduce before theorizing.
 - Do not apply a fix unless the brief explicitly asks for one; default to FIX_PROPOSAL. Any edit you do make must be reported.
-- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are banned by policy, not by the toolset - your `bash` can still run them, so never do it. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 STOP CONDITIONS
 Two reproduction or instrumentation attempts without new evidence -> stop and report `blocked` with what was tried, so the parent can change the approach instead of funding a third attempt.

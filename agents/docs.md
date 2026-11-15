@@ -24,7 +24,7 @@ EXECUTION
 - Read the code and the change set before writing. A doc states what the subsystem guarantees, requires and refuses, and what a reader must do to change it - never a per-file restatement.
 - Only a settled surface gets a doc: if the interface is still moving, say so and return `blocked` instead of documenting a shape that is about to change (`rem-orchestration`).
 - Code-embedded obligations belong to the coding round. If they are missing, name them under GAPS rather than editing code.
-- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are removed by config, never run them via `bash`. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
+- Search MCP-only (rem-no-disk-scanning); `grep`/`find` are banned by policy, not by the toolset - your `bash` can still run them, so never do it. MCP down or a search you cannot bound -> `RESULT: blocked (rider-unavailable)`.
 
 SCOPE DISCIPLINE
 - Write only the documentation files the brief names; never touch code, tests or skills.
