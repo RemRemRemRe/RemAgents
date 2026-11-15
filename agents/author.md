@@ -27,7 +27,7 @@ EXECUTION
 - Follow rem-cpp-best-practices.
 - Formatting closes the round: the formatter on every touched file before the compile, so verified bytes are formatted bytes (§4); the commit stage never reformats.
 - Lint closes the same round: rem-cpp-best-practices §16b over every touched file, typo level and above; a remaining finding is a documented false positive in the report.
-- Member order closes the round too: rem-cpp-best-practices §4's checker on the round's diff (exit 1 is fixed now, exit 2 means nothing was checked - never clean); a pre-existing hit on an untouched line is reported, not fixed.
+- Member order closes the round too: rem-cpp-best-practices §4's checker on the round's diff (exit 1 is fixed now, exit 2 means nothing was checked - never clean); a finding a tool re-derives is fixed or swept, never carried as backlog.
 - Ship production-ready: rem-observability-and-profiling, rem-docs-and-config, metadata per §10.
 - Search MCP-only (rem-no-disk-scanning), never `grep`/`find` via `bash`; MCP down or an unbounded search -> `RESULT: blocked (rider-unavailable)`.
 

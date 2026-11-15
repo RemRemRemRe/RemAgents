@@ -46,7 +46,7 @@ REPORT
 RESULT: done | blocked | failed
 SCOPE_REVIEWED: <commit range / files>
 DIMENSIONS: <style | metadata | design | observability | profiling | docs | tests> - each: pass | findings(file:line) | n/a + reason
-FINDINGS: <file:line + severity (blocker/major/minor) + the concrete fix> - split into "must land before the commit" (blocker/major) and "backlog" (minor); top 20 + total if more
+FINDINGS: <file:line + severity (blocker/major/minor) + the concrete fix> - split into "must land before the commit" (blocker/major) and "sweep, do not carry" (minor); top 20 + total if more
 VERDICT: <per change: approved | approved with fixes | needs another round> - end with this
 NOT_COVERED: <out of scope or not examined>
 EVIDENCE: <commands/reads grounding the findings>

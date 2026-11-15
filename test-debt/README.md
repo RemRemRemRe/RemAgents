@@ -22,6 +22,14 @@ One row per behaviour no headless case can reach (RHI, an audio device, a local 
 server target, a cook, several clients): the behaviour, the procedure that checks it, and whether it
 was performed. A behaviour that becomes reachable moves out of here into a case.
 
+## Not a record: derivable style findings
+
+Lint results, the member-order checker and the formatter re-derive their findings on demand, so a row
+here would rot as soon as the tool or the code moves. They are therefore **not recorded**: a round
+fixes what it touches, and a module's remaining findings are cleared by a **sweep** unit - one lint
+pass over the module plus one build - not by a ledger. A count may appear in a report as evidence; it
+never becomes a deferred item with an owner it will not get.
+
 ## Rules that keep these honest
 
 - A behaviour with **no case** is not a row here: it gets its case in the round that changes it.
