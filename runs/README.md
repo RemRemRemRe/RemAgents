@@ -74,7 +74,8 @@ Persisting raw material on disk lets the main session:
 ## OBJECTIVE
 <one line, verifiable>
 ## SCOPE
-- allowed: <files / modules / symbols>
+- allowed: <file:region, file, module or symbol — a file already carrying someone else's uncommitted work is
+  listed as `file:region` (their hunk named as off-limits) so two units may share it>
 - forbidden: <…>
 ## CONSTRAINTS
 - standards: <skill names>
