@@ -21,11 +21,16 @@ both files in the same change.
 | `grill` | Plan & Decision | decision analysis | read-only | batch-grill-with-docs: decision graph + frontier of open questions with recommendations |
 | `author` | Code Authoring | code authoring | full | implement one decided work unit with the cases for its behaviour in the same commit, self-verified by compiling the affected target and never by running a case |
 | `review` | Code Review | unified-style review | read-only | cpp best-practices checklist, layered BDD test-tree audit, per-case non-vacuity verdict, codebase audit |
-| `verify` | Build & Test | the commit's build, the push gate's run | full | build at the commit gate; the push gate's one run (core layer plus the prefixes the range touches); logs to disk |
+| `verify` | Build & Test | the commit gate's build, the push gate's run | full | run the commit gate's build; the push gate's one run (core layer plus the prefixes the range touches); logs to disk |
 | `debug` | Debugging | runtime root-cause | full | debugger-driven evidence chain, root cause, fix proposal |
 | `docs` | Docs | documentation pass | full | write the documentation a change owes (module, subsystem, config reference) at the freeze, from the code |
-| `git` | Git & Commit | submodule updates + commit | full | submodule sync/push, single-responsibility commits, history rewrite, one build; the suite at the push gate |
+| `git` | Git & Commit | submodule updates + commit | full | submodule sync/push, single-responsibility commits, history rewrite, the commit gate's build confirmed on the same tree and reused (never a second build); the suite at the push gate |
 | `skill-authoring` | Skill Authoring | meta (maintaining skills) | full | skill writing, generalization, MCP server authoring, knowledge capture |
+
+These gates are phases of one cadence, owned by the public skills collection's
+`rem-orchestration` skill: iteration writes code and cases and runs nothing, the freeze
+is the **commit gate** (format + review + one build), and the **push gate** is one run of
+the core test layer plus the prefixes the range touches, in its own session.
 
 ## The Boundary Model
 
