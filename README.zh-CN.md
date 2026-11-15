@@ -105,7 +105,7 @@ DETAIL:   <run-dir 路径>
   回溯。
 - 没有 profile 固定模型：执行者默认继承父会话的模型，除非 Agent 调用用
   `model`/`thinking` 参数覆盖。
-- `verify` 与 `git` 默认 `run_in_background: true`；完成后父会话会收到最终
+- 所有 profile 默认 `run_in_background: true`；完成后父会话会收到最终
   报告通知。
 - `runs/` 下只有约定文档与模板被追踪；运行产物（`<run-id>/brief.md`、
   `state.md`、`*.log`、`report.md`）被 gitignore，仅存本地。
@@ -114,6 +114,9 @@ DETAIL:   <run-dir 路径>
   `tools/validate.local.json` —— 每个克隆复制一次
   `tools/validate.local.example.json`（该文件 gitignored）；也可用
   `--pi-web`/`--cwd` 或 `PI_WEB_ROOT`/`PROJECT_CWD`。
+- 另有一条**本仓库自定**的上限 `MAX_PROMPT_CHARS`（3600 字符，pi-web 没有这个限制）：
+  校验器只在超限时打印尺寸，余量要自己量；因此改 profile 是有预算的，加内容要靠压缩或
+  交叉引用，而不是抬高上限。
 - 可选：安装本地推送前检查（`git config core.hooksPath .githooks`），
   推送前自动校验。退出码 2（路径未配置）**跳过**而非阻断；
   `git push --no-verify` 是故意留的绕过口。

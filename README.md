@@ -116,8 +116,8 @@ the run artifacts share one path:
   directory — pi-web does not walk ancestor directories for profile locations.
 - No profile pins a model: every executor inherits the parent session's model
   unless the Agent call overrides `model`/`thinking`.
-- `verify` and `git` default to `run_in_background: true`; the parent is
-  notified with the final report when they finish.
+- Every profile sets `run_in_background: true`; the parent is notified with the
+  final report when the run finishes.
 - Under `runs/`, only the convention document and the templates are tracked;
   run artifacts (`<run-id>/brief.md`, `state.md`, `*.log`, `report.md`) are
   git-ignored and stay local.
@@ -125,10 +125,13 @@ the run artifacts share one path:
   frontmatter fallback, scope, the report-skeleton fields, and the `runs/`
   artifact guard. Machine paths come from `tools/validate.local.json` — copy
   `tools/validate.local.example.json` once per clone (git-ignored); or pass
-  `--pi-web`/`--cwd`, or set `PI_WEB_ROOT`/`PROJECT_CWD`. It also enforces
-  pi-web's prompt cap, so a profile edit is budgeted: check the reported headroom
-  before adding, and pay for an addition by compression or a cross-reference
-  rather than by raising the cap.
+  `--pi-web`/`--cwd`, or set `PI_WEB_ROOT`/`PROJECT_CWD`. It also enforces this
+  repository's own `MAX_PROMPT_CHARS` cap (3600) on the system prompt — a
+  convention of this repo, not a pi-web limit. The validator prints a profile's
+  size only when it breaks the cap; the remaining budget is not printed, so the
+  reader computes it by measuring the prompt. A profile edit is therefore
+  budgeted: pay for an addition by compression or a cross-reference rather than
+  by raising the cap.
 - Optional: install the local pre-push check (`git config core.hooksPath .githooks`)
   so validation runs before a push. Exit code 2 (paths not configured) skips the
   check instead of blocking it; `git push --no-verify` is the deliberate bypass.

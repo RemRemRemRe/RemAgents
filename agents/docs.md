@@ -6,6 +6,7 @@ disallowed_tools: grep, find
 load_skills: true
 load_extensions: true
 codemode: on
+mcp: on
 enabled: true
 inherit_context: false
 run_in_background: true
