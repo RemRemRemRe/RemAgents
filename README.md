@@ -67,6 +67,7 @@ CHANGES:  <file:line, or none>
 EVIDENCE: <command + key output lines + exit code>
 RISKS:
 NEXT:
+COST:     <expensive steps this run used: builds, suite runs, round trips>
 DETAIL:   <run-dir path>
 ```
 

@@ -105,12 +105,15 @@ CHANGES:  <file:line, or "none">
 EVIDENCE: <command + key output lines + exit code>
 RISKS:    <unresolved / uncovered / unverified>
 NEXT:     <1-3 suggested next steps>
+COST:     <expensive steps this run used: builds, suite runs, round trips>
 DETAIL:   <run-dir path>
 ```
 
 Rules:
 
 - every claim carries evidence (a command with its exit code, or `file:line`);
+- every finding carries a severity: blocker and major are fixed before the commit, minor is swept in
+  the same pass rather than carried;
 - never paste logs — write them to the run dir and reference the path;
 - **a step that overruns its budget is measured, not waited on.** A build past a few minutes, a command
   past a few seconds or a wait past ten minutes gets one line in `state.md` (the command, how long, the

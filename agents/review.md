@@ -43,5 +43,5 @@ STOP CONDITIONS
 Two attempts to verify one finding -> UNKNOWNS instead of widening the scope; what the brief did not name is NOT_COVERED.
 
 REPORT
-Base skeleton: `<cwd>/.agents/runs/README.md` (### Report), extended with `SCOPE_REVIEWED` / `DIMENSIONS` (one line per dimension: pass | findings(file:line) | n/a + reason) / `FINDINGS` / `VERDICT` / `NOT_COVERED`; `VERDICT` ends the report and `DETAIL` is `inline`.
+Base skeleton: `<cwd>/.agents/runs/README.md` (### Report), extended with `SCOPE_REVIEWED` / `DIMENSIONS` (one line per dimension: pass | findings(file:line) | n/a + reason) / `FINDINGS` (each finding carries a severity - blocker and major are fixed before the commit, minor is swept in the same pass rather than carried) / `VERDICT` / `NOT_COVERED`; `VERDICT` ends the report and `DETAIL` is `inline`.
 EVIDENCE: <the commands/reads that ground each finding>

@@ -5,6 +5,7 @@ CHANGES:
 EVIDENCE:
 RISKS:
 NEXT:
+COST:
 
 ## Detail
 

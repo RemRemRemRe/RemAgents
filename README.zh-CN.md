@@ -60,6 +60,7 @@ CHANGES:  <file:line，或 none>
 EVIDENCE: <命令 + 关键输出行 + 退出码>
 RISKS:
 NEXT:
+COST:     <本次运行使用的昂贵步骤：构建、套件运行、往返>
 DETAIL:   <run-dir 路径>
 ```
 
