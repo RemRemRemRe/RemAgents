@@ -99,6 +99,8 @@ DETAIL:   <run-dir 路径>
    New-Item -ItemType Junction -Path "<cwd>\.agents\runs" -Target "<repo路径>\runs"
    ```
 
+   追踪的 `test-debt/` 记录同理（`<cwd>/.agents/test-debt`）；约定见 [test-debt/README.md](test-debt/README.md)。
+
 4. 重启或 reload pi-web 会话，Agent 工具即可识别新 profile。
 5. 项目特定值（构建路径、测试前缀、插件清单）**不在本仓库** —— 公开技能
    只写规则；每个技能可带 git-ignored 的 `local/` 覆盖（symlink 指向私有

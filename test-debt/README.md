@@ -1,7 +1,7 @@
 # Test records — the convention
 
-Two small files replace the old per-plugin debt ledger (retired 2026-11-14, ADR-009; the ledgers
-themselves sit in `archive/`). They are written in the round that needs them, not in a later session.
+Two small files replace the old per-plugin debt ledger (retired 2026-11-14). They are written in
+the round that needs them, not in a later session.
 
 ## 1. Unrun cases — `<cwd>/.agents/test-debt/unrun-cases.md`
 
@@ -10,11 +10,11 @@ One row per case that **exists and has never executed**:
 | field | meaning |
 |---|---|
 | case | the full automation name |
-| why | `red` (expected to fail on a known defect) / `new` (written, no run yet) / `inert` (renamed or moved since its run, body unchanged) |
+| why | `red` (expected to fail on a known defect) / `red not proven` (expected to fail, but its red cannot be shown without a run) / `new` (written, no run yet) / `inert` (renamed or moved since its run, body unchanged) |
 | next tier | round / push gate / release |
 | owner, deadline | required for `red`; a **core**-layer red blocks the push gate, a non-core red does not, but the gate's report must list every red it met |
 
-Cap: about ten rows. More means a run is overdue.
+Cap: about ten rows per plugin. More means a run is overdue.
 
 ## 2. Manual checks — `<cwd>/.agents/test-debt/manual-checks.md`
 
@@ -35,7 +35,6 @@ never becomes a deferred item with an owner it will not get.
 - A behaviour with **no case** is not a row here: it gets its case in the round that changes it.
 - Two classes never leave a commit unproven: externally visible behaviour and bug fixes.
 - The ledger form is gone because a deferred *description* rots: by the time a later session reads
-  it, the code may disagree (measured three times in 2026-11 - see `archive/`).
-- A renamed, dropped or merged case is one row in `case-renames.md`, which sits next to the layer
-  table, so a record that cites an old name stays resolvable.
-- `archive/` holds the pre-2026-11-14 ledgers, for history only.
+  it, the code may disagree (measured three times in 2026-11).
+- A renamed, dropped or merged case is one row in `case-renames.md`, which sits next to the two
+  records, so a record that cites an old name stays resolvable.

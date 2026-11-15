@@ -109,6 +109,9 @@ the run artifacts share one path:
    New-Item -ItemType Junction -Path "<cwd>\.agents\runs" -Target "<repo-path>\runs"
    ```
 
+   The tracked `test-debt/` records follow the same pattern (`<cwd>/.agents/test-debt`); their
+   convention is [test-debt/README.md](test-debt/README.md).
+
 4. Restart or reload the pi-web session so the Agent tool picks up the new
    profiles.
 5. Project-specific values (build paths, test prefix, plugin inventory) are

@@ -5,7 +5,7 @@
 ```md
 | case | why | next tier | owner | deadline |
 |---|---|---|---|---|
-| `<full automation name>` | `red` / `new` / `inert` | round / push gate / release | <who> | <date or "next content session"> |
+| `<full automation name>` | `red` / `red not proven` / `new` / `inert` | round / push gate / release | <who> | <date or "next content session"> |
 ```
 
 ## Manual checks (`manual-checks.md`)
