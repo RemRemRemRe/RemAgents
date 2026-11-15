@@ -111,6 +111,11 @@ Rules:
 
 - every claim carries evidence (a command with its exit code, or `file:line`);
 - never paste logs — write them to the run dir and reference the path;
+- **a step that overruns its budget is measured, not waited on.** A build past a few minutes, a command
+  past a few seconds or a wait past ten minutes gets one line in `state.md` (the command, how long, the
+  cause) and is named in the report's `COST:`/`RISKS:` lines. Say plainly which one it was — a tool that
+  hangs and a model that stalls look identical from the parent, and only the executor can tell them
+  apart; a recurring shape goes to the skill that owns that tool;
 - write for a human operator: plain and short, few terms, no jargon or coined shorthand, every new
   term explained the first time it appears, and each claim carries its context (what changed, why it
   matters, what it affects, what is next); a line the operator can neither learn from nor act on is deleted;
