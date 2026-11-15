@@ -21,23 +21,24 @@ CONTRACTS (`<cwd>/.agents/runs/README.md` when present)
 - Report out: the only channel back, verbatim into the parent's context and <= 40 lines; full detail in `<cwd>/.agents/runs/<run-id>/report.md`; logs and generators stay in temp (rem-temp-files) unless the report cites them. Write for a human operator: plain and short, no jargon or shorthand; a new term is explained once.
 
 EXECUTION
-- Load the skill the task needs: ue-code-authoring; refactoring-code for semantic refactors; plus the applicable Rem skills (ranges, modules, sequencer channels, asset menus, plugin adaptation).
-- Semantic refactors (rename, move, extract) prefer the IDE's MCP refactoring tools; text replacement is the fallback.
-- Iteration: code and the cases for its behaviour in one commit; run nothing - no spec, no filter, no suite, no editor or PIE session; a compile is the round's only evidence. One intent line per behaviour in `<run-dir>/test-intent.md`: `<prefix> | trigger -> assertion`; layers per rem-test-completeness §3c. A never-executed case becomes one row of the plugin's unrun record (`rem-orchestration`, *Two records*) naming why and its next tier; a red you cannot show without a run marks the case `red not proven`.
+- Load the skill the task needs: ue-code-authoring; refactoring-code for semantic refactors; plus the applicable Rem skills.
+- Semantic refactors prefer the IDE's MCP tools; text replacement is the fallback.
+- Iteration: code and the cases for its behaviour in one commit; run nothing - no spec, no filter, no suite, no editor or PIE session; a compile is the round's only evidence. One intent line per behaviour in `<run-dir>/test-intent.md`: `<prefix> | trigger -> assertion`; layers per rem-test-completeness §3c. A never-executed case is one row of the plugin's unrun record (`rem-orchestration`, *Two records*) with why and its next tier; a red not provable without a run marks the case `red not proven`.
 - Follow rem-cpp-best-practices.
-- Formatting closes this round: the formatter on every touched file, then the compile, so verified bytes are formatted bytes (rem-cpp-best-practices §4); the commit stage never reformats.
+- Formatting closes the round: the formatter on every touched file before the compile, so verified bytes are formatted bytes (§4); the commit stage never reformats.
 - Lint closes the same round: rem-cpp-best-practices §16b over every touched file, typo level and above; a remaining finding is a documented false positive in the report.
-- Ship production-ready: rem-observability-and-profiling, rem-docs-and-config, metadata per rem-cpp-best-practices §10.
-- Search MCP-only (rem-no-disk-scanning); never run `grep`/`find` via `bash`. MCP down or an unbounded search -> `RESULT: blocked (rider-unavailable)`.
+- Member order closes the round too: rem-cpp-best-practices §4's checker on the round's diff (exit 1 is fixed now, exit 2 means nothing was checked - never clean); a pre-existing hit on an untouched line is reported, not fixed.
+- Ship production-ready: rem-observability-and-profiling, rem-docs-and-config, metadata per §10.
+- Search MCP-only (rem-no-disk-scanning), never `grep`/`find` via `bash`; MCP down or an unbounded search -> `RESULT: blocked (rider-unavailable)`.
 
 LOCAL DECISIONS
-You decide locally inside SCOPE and CONSTRAINTS; every deviation (scope, interface, unanticipated design) must appear under DEVIATIONS with its reason.
+Decide locally inside SCOPE and CONSTRAINTS; every deviation appears under DEVIATIONS with its reason.
 
 SELF-VERIFICATION
 The unit is done only when the smallest target containing the change compiles; report the command and exit code. The freeze owns one full build; the suite runs only at the push gate. Never report done on unverified code; never claim a case passed - none ran.
 
 FORBIDDEN
-Commit, push, or rewrite history (the git executor does that); run any case - no spec, no filter, no suite, no editor session (the push gate owns the run); touch files outside SCOPE or another unit's files.
+Commit, push, or rewrite history (the git executor does that); run any case - no spec, filter, suite or editor session (the push gate owns the run); touch files outside SCOPE.
 
 STOP CONDITIONS
 Acceptance unmet after two distinct attempts -> `blocked` with both attempts and what each showed.
